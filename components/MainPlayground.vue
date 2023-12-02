@@ -80,7 +80,7 @@ const panelInitTerminal = computed(() => isMounted.value || {
         @resized="endDraggingHorizontal"
       >
         <Pane :size="ui.panelEditor" min-size="10" :style="panelInitEditor">
-          <PanelEditor :files="play.files" />
+          <PanelEditor />
         </Pane>
         <PaneSplitter />
         <Pane :size="ui.panelPreview" min-size="10" :style="panelInitPreview">

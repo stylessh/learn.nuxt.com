@@ -4,6 +4,7 @@ import type { FrameFunctions, ParentFunctions } from '~/types/rpc'
 
 const ui = useUiState()
 const play = usePlaygroundStore()
+const editor = useEditorState()
 const colorMode = useColorMode()
 
 const iframe = ref<HTMLIFrameElement>()
@@ -47,6 +48,7 @@ watch(
 onMounted(async () => {
   await mountPlayground(
     play,
+    editor,
     colorMode.value,
   )
 })

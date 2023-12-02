@@ -7,6 +7,7 @@ import type { WebContainerProcess } from '@webcontainer/api'
 import { WebContainer } from '@webcontainer/api'
 import type { PlaygroundStore } from '../stores/playground'
 import { templates } from '~/templates'
+import type { EditorStore } from '~/stores/editor'
 
 if (import.meta.server)
   throw new Error('WebContainer cannot be mounted on server')
@@ -21,6 +22,7 @@ export async function useWebContainer() {
 
 export async function mountPlayground(
   play: PlaygroundStore,
+  editor: EditorStore,
   colorMode: string,
 ) {
   const { files, tree } = await templates.basic({
@@ -36,6 +38,7 @@ export async function mountPlayground(
 
   play.webcontainer = wc
   play.files = files
+  editor.files = files
 
   files.forEach((file) => {
     file.wc = wc
